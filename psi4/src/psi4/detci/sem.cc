@@ -462,7 +462,8 @@ void CIWavefunction::sem_iter(CIvect &Hd, struct stringwr **alplist, struct stri
                 tval = Cvec.calc_ssq(buffer1, buffer2, alplist, betlist, k);
                 Cvec.buf_lock(buffer1);
                 if (std::fabs(tval - (Parameters_->S * (Parameters_->S + 1.0))) > 1.0E-3) {
-                    outfile->Printf("Computed <S^2> not as desired, discarding guess\n");
+                    outfile->Printf("Computed <S^2> not as desired, but still adding it\n");
+                    k++;
                 } else
                     k++;
             } else
